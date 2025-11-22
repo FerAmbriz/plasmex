@@ -48,66 +48,38 @@ function App() {
       <header className="hero">
         <h1>Plasmex</h1>
         <p>Plásmidos de Alta Pureza y Trazabilidad Total, Entregados Rápido y con Estándares Industriales</p>
+        <p>La solución profesional para biotecnológicas, CDMOs y laboratorios en México que necesitan calidad, documentación sólida y cero retrasos.</p> <button className="cta-btn">Solicitar Cotización en 24 horas</button>
       </header>
 
       <section className="section">
-        <h2 style={{ color:'#47D788', textAlign:'center', marginBottom:'1rem' }}>Nuestros Productos</h2>
-        <p style={{ color:'#ccc', textAlign:'center', maxWidth:'800px', margin:'0 auto 2rem auto' }}>
-          Descubre nuestra amplia gama de plásmidos y herramientas de clonación optimizadas para investigación y desarrollo biotecnológico.
+        <h1 style={{ color:'#40bd78ff', textAlign:'center', marginBottom:'0.3rem' }}>Nuestro compromiso</h1>
+        <p style={{ color:'#000000ff', textAlign:'center', maxWidth:'800px', margin:'0 auto 0.3rem auto' }}>
+          Producimos y purificamos plásmidos con documentación completa, pureza validada, control de endotoxina y trazabilidad 100% compatible con auditorías COFEPRIS, FDA y EMA.
+        </p><p style={{ color:'#000000ff', textAlign:'center', maxWidth:'800px', margin:'0 auto 0.3rem auto' }}>
+          Evita aduanas, retrasos y sobrecostos internacionales. Entregamos plásmidos listos para investigación o producción en 3 a 7 días.
         </p>
         <div className="card-container" id="cards-container"></div>
       </section>
 
       <section className="section">
-        <h2 style={{ color:'#47D788', textAlign:'center', marginBottom:'3rem' }}>Servicios Destacados</h2>
+        <h1 style={{ color:'#40bd78ff', textAlign:'center', marginBottom:'3rem' }}>Servicios Destacados</h1>
         <div className="servicios-destacados">
           <div className="servicio">
             <h3>Clonación de Plásmidos</h3>
             <p>Realizamos clonación eficiente y precisa de tus plásmidos, asegurando alta fidelidad y calidad en cada replicación para tus experimentos y proyectos.</p>
           </div>
           <div className="servicio">
-            <h3>Asesoría Científica</h3>
+            <h3>Soporte técnico real</h3>
             <p>Contamos con expertos en biología molecular que te guían en el diseño de plásmidos y estrategias de clonación, garantizando resultados confiables y reproducibles.</p>
           </div>
-        </div>
+        </div><div className="servicio">
+            <h3>Calidad industrial sin precios inflados
+</h3>
+            <p>Research Grade, High Quality y GMP-like según lo que necesites. Pureza asegurada, endotoxina baja y resultados reproducibles lote tras lote..</p>
+          </div>
       </section>
 
-      <section className="section">
-        <h2 style={{ color:'#47D788', textAlign:'center', marginBottom:'3rem' }}>Quiénes Somos</h2>
-        <div className="info-cards">
-          <InfoCard 
-            title="Innovación Biotecnológica"
-            text="Implementamos técnicas avanzadas de clonación y manipulación genética para entregar soluciones confiables y de alta precisión."
-            svg={
-              <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#47D788" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M12 2L15 8H9L12 2Z"/>
-                <path d="M12 22V12"/>
-                <path d="M2 12H22"/>
-              </svg>
-            }
-          />
-          <InfoCard 
-            title="Equipo Especializado"
-            text="Biólogos moleculares, bioinformáticos y técnicos experimentados colaborando para garantizar resultados exactos y reproducibles en cada proyecto."
-            svg={
-              <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#47D788" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="12" cy="7" r="4"/>
-                <path d="M5.5 21h13a2 2 0 0 0-1.73-1h-9.54A2 2 0 0 0 5.5 21z"/>
-              </svg>
-            }
-          />
-          <InfoCard 
-            title="Transparencia y Confianza"
-            text="Brindamos reportes claros y protocolos estandarizados, garantizando integridad, seguridad y reproducibilidad en cada clonación."
-            svg={
-              <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#47D788" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2z"/>
-                <path d="M12 6v6l4 2"/>
-              </svg>
-            }
-          />
-        </div>
-      </section>
+
 
       <section className="cta-section">
         <h2>Optimiza tu Investigación con Plasmex</h2>
