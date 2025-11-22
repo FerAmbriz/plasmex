@@ -1,95 +1,137 @@
 // App.js
+import React, { useEffect } from 'react';
 import './App.css';
-import { motion } from 'framer-motion';
-import Spline from '@splinetool/react-spline';
+
 
 function App() {
-  // Animaciones para los contenedores
-  const fadeInUp = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+  useEffect(() => {
+    // Aquí podrías agregar lógica para generar dinámicamente cards de productos o servicios con D3
+  }, []);
+
+  const handleNavigation = (path) => {
+    window.location.href = window.location.origin + path;
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-start font-sans text-gray-800">
-      
-      {/* Header */}
-      <motion.header 
-        className="w-full p-6 flex flex-col items-center bg-white shadow-md"
-        initial="hidden"
-        animate="visible"
-        variants={fadeInUp}
-      >
-        <h1 className="text-4xl font-bold text-blue-700 mb-2">Plasmex 3D</h1>
-        <p className="text-lg text-gray-600 max-w-xl text-center">
-          Ejemplo de plásmido 3D interactivo usando Spline
+    <div>
+      <nav className="navbar">
+  <button 
+    onClick={() => handleNavigation('/')} 
+    className="nav-btn active"
+  >
+    Inicio
+  </button>
+
+  <button 
+    onClick={() => handleNavigation('/productos')} 
+    className="nav-btn"
+  >
+    Productos
+  </button>
+
+  <button 
+    onClick={() => handleNavigation('/servicios')} 
+    className="nav-btn"
+  >
+    Servicios
+  </button>
+
+  <button 
+    onClick={() => handleNavigation('/contacto')} 
+    className="nav-btn"
+  >
+    Contacto
+  </button>
+</nav>
+
+
+      <header className="hero">
+        <h1>Plasmex</h1>
+        <p>Plásmidos de Alta Pureza y Trazabilidad Total, Entregados Rápido y con Estándares Industriales</p>
+      </header>
+
+      <section className="section">
+        <h2 style={{ color:'#47D788', textAlign:'center', marginBottom:'1rem' }}>Nuestros Productos</h2>
+        <p style={{ color:'#ccc', textAlign:'center', maxWidth:'800px', margin:'0 auto 2rem auto' }}>
+          Descubre nuestra amplia gama de plásmidos y herramientas de clonación optimizadas para investigación y desarrollo biotecnológico.
         </p>
-      </motion.header>
+        <div className="card-container" id="cards-container"></div>
+      </section>
 
-      {/* Sección de Spline con proteína animada */}
-      <motion.section
-        className="relative w-full h-[500px] my-10"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1 }}
-      >
-        {/* Plásmido 3D */}
-        <Spline scene="https://prod.spline.design/2fzdsSVagfszNxsd/scene.splinecode" />
+      <section className="section">
+        <h2 style={{ color:'#47D788', textAlign:'center', marginBottom:'3rem' }}>Servicios Destacados</h2>
+        <div className="servicios-destacados">
+          <div className="servicio">
+            <h3>Clonación de Plásmidos</h3>
+            <p>Realizamos clonación eficiente y precisa de tus plásmidos, asegurando alta fidelidad y calidad en cada replicación para tus experimentos y proyectos.</p>
+          </div>
+          <div className="servicio">
+            <h3>Asesoría Científica</h3>
+            <p>Contamos con expertos en biología molecular que te guían en el diseño de plásmidos y estrategias de clonación, garantizando resultados confiables y reproducibles.</p>
+          </div>
+        </div>
+      </section>
 
-        {/* Proteína que aparece al scroll */}
-        <motion.div
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-green-400 text-white px-4 py-2 rounded-full shadow-lg"
-          initial={{ opacity: 0, scale: 0.5 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1.2 }}
-        >
-          Proteína Recombinante
-        </motion.div>
-      </motion.section>
+      <section className="section">
+        <h2 style={{ color:'#47D788', textAlign:'center', marginBottom:'3rem' }}>Quiénes Somos</h2>
+        <div className="info-cards">
+          <InfoCard 
+            title="Innovación Biotecnológica"
+            text="Implementamos técnicas avanzadas de clonación y manipulación genética para entregar soluciones confiables y de alta precisión."
+            svg={
+              <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#47D788" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M12 2L15 8H9L12 2Z"/>
+                <path d="M12 22V12"/>
+                <path d="M2 12H22"/>
+              </svg>
+            }
+          />
+          <InfoCard 
+            title="Equipo Especializado"
+            text="Biólogos moleculares, bioinformáticos y técnicos experimentados colaborando para garantizar resultados exactos y reproducibles en cada proyecto."
+            svg={
+              <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#47D788" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="12" cy="7" r="4"/>
+                <path d="M5.5 21h13a2 2 0 0 0-1.73-1h-9.54A2 2 0 0 0 5.5 21z"/>
+              </svg>
+            }
+          />
+          <InfoCard 
+            title="Transparencia y Confianza"
+            text="Brindamos reportes claros y protocolos estandarizados, garantizando integridad, seguridad y reproducibilidad en cada clonación."
+            svg={
+              <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#47D788" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2z"/>
+                <path d="M12 6v6l4 2"/>
+              </svg>
+            }
+          />
+        </div>
+      </section>
 
-      {/* Contenido adicional debajo para scroll */}
-      <main className="flex flex-col items-center justify-center my-10 px-4 md:px-20 w-full space-y-8">
-        <motion.div 
-          className="bg-white rounded-xl shadow-lg p-8 max-w-3xl"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={fadeInUp}
-        >
-          <h2 className="text-2xl font-semibold text-blue-600 mb-4">Visualización 3D</h2>
-          <p className="text-gray-700">
-            Aquí estamos mostrando un modelo 3D de ejemplo. En tu caso, podrías exportar tu plásmido (o plasmido + proteína) desde Spline y usar tu propia URL de escena.
-          </p>
-        </motion.div>
+      <section className="cta-section">
+        <h2>Optimiza tu Investigación con Plasmex</h2>
+        <p>Confía en nosotros para la clonación de plásmidos y potencia tus proyectos de biotecnología con resultados precisos y confiables.</p>
+        <button className="cta-btn">Contáctanos</button>
+      </section>
 
-        <motion.div 
-          className="bg-white rounded-xl shadow-lg p-8 max-w-3xl"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={fadeInUp}
-        >
-          <h2 className="text-2xl font-semibold text-blue-700 mb-4">Animaciones al hacer scroll</h2>
-          <p className="text-gray-700">
-            Puedes combinar la escena 3D con animaciones de Framer Motion, o incluso utilizar la API de código de Spline para manipular objetos dentro de la escena según eventos de tu aplicación.
-          </p>
-        </motion.div>
-      </main>
-
-      {/* Footer */}
-      <motion.footer 
-        className="w-full p-6 text-center text-gray-500 text-sm"
-        initial="hidden"
-        animate="visible"
-        variants={fadeInUp}
-      >
-        &copy; {new Date().getFullYear()} Plasmex. Ejemplo con Spline.
-      </motion.footer>
+      <footer>© 2025 Plasmex. Todos los derechos reservados.</footer>
     </div>
   );
 }
 
+const InfoCard = ({ title, text, svg }) => (
+  <div className="info-card">
+    <div className="graphic">{svg}</div>
+    <div className="text">
+      <h3>{title}</h3>
+      <p>{text}</p>
+    </div>
+  </div>
+);
+
 export default App;
+
+
+
 
