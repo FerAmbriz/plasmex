@@ -1,5 +1,7 @@
+// App.js
 import './App.css';
 import { motion } from 'framer-motion';
+import Spline from '@splinetool/react-spline';
 
 function App() {
   // Animaciones para los contenedores
@@ -18,58 +20,62 @@ function App() {
         animate="visible"
         variants={fadeInUp}
       >
-        <h1 className="text-4xl font-bold text-blue-700 mb-2">Plasmex</h1>
+        <h1 className="text-4xl font-bold text-blue-700 mb-2">Plasmex 3D</h1>
         <p className="text-lg text-gray-600 max-w-xl text-center">
-          Innovando en biotecnología para un futuro más saludable. 
-          Descubre nuestras soluciones avanzadas en terapias y diagnósticos.
+          Ejemplo de plásmido 3D interactivo usando Spline
         </p>
       </motion.header>
 
-      {/* Main Content */}
-      <main className="flex flex-col items-center justify-center my-10 px-4 md:px-20 w-full">
-        
-        <motion.section 
-          className="bg-white rounded-xl shadow-lg p-8 m-4 max-w-3xl hover:shadow-2xl transition-shadow duration-300"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={fadeInUp}
-        >
-          <h2 className="text-2xl font-semibold text-blue-600 mb-4">Nuestros Servicios</h2>
-          <ul className="list-disc list-inside text-gray-700 space-y-2">
-            <li>Investigación avanzada en terapias celulares</li>
-            <li>Desarrollo de soluciones diagnósticas innovadoras</li>
-            <li>Consultoría en biotecnología y salud</li>
-          </ul>
-        </motion.section>
+      {/* Sección de Spline con proteína animada */}
+      <motion.section
+        className="relative w-full h-[500px] my-10"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1 }}
+      >
+        {/* Plásmido 3D */}
+        <Spline scene="https://prod.spline.design/2fzdsSVagfszNxsd/scene.splinecode" />
 
-        <motion.section 
-          className="bg-white rounded-xl shadow-lg p-8 m-4 max-w-3xl hover:shadow-2xl transition-shadow duration-300"
+        {/* Proteína que aparece al scroll */}
+        <motion.div
+          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-green-400 text-white px-4 py-2 rounded-full shadow-lg"
+          initial={{ opacity: 0, scale: 0.5 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.2 }}
+        >
+          Proteína Recombinante
+        </motion.div>
+      </motion.section>
+
+      {/* Contenido adicional debajo para scroll */}
+      <main className="flex flex-col items-center justify-center my-10 px-4 md:px-20 w-full space-y-8">
+        <motion.div 
+          className="bg-white rounded-xl shadow-lg p-8 max-w-3xl"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeInUp}
         >
-          <h2 className="text-2xl font-semibold text-blue-700 mb-4">Nuestra Misión</h2>
+          <h2 className="text-2xl font-semibold text-blue-600 mb-4">Visualización 3D</h2>
           <p className="text-gray-700">
-            Plasmex busca transformar la medicina mediante innovación y tecnología de vanguardia, 
-            ofreciendo soluciones confiables y efectivas para mejorar la salud humana.
+            Aquí estamos mostrando un modelo 3D de ejemplo. En tu caso, podrías exportar tu plásmido (o plasmido + proteína) desde Spline y usar tu propia URL de escena.
           </p>
-        </motion.section>
+        </motion.div>
 
-        <motion.section 
-          className="mt-8 text-center"
+        <motion.div 
+          className="bg-white rounded-xl shadow-lg p-8 max-w-3xl"
           initial="hidden"
-          animate="visible"
+          whileInView="visible"
+          viewport={{ once: true }}
           variants={fadeInUp}
         >
-          <a 
-            href="https://plasmex.com" 
-            className="bg-blue-600 text-white px-8 py-3 rounded-lg shadow hover:bg-blue-700 transition-colors duration-300"
-          >
-            Conócenos
-          </a>
-        </motion.section>
+          <h2 className="text-2xl font-semibold text-blue-700 mb-4">Animaciones al hacer scroll</h2>
+          <p className="text-gray-700">
+            Puedes combinar la escena 3D con animaciones de Framer Motion, o incluso utilizar la API de código de Spline para manipular objetos dentro de la escena según eventos de tu aplicación.
+          </p>
+        </motion.div>
       </main>
 
       {/* Footer */}
@@ -79,10 +85,11 @@ function App() {
         animate="visible"
         variants={fadeInUp}
       >
-        &copy; {new Date().getFullYear()} Plasmex. Todos los derechos reservados.
+        &copy; {new Date().getFullYear()} Plasmex. Ejemplo con Spline.
       </motion.footer>
     </div>
   );
 }
 
 export default App;
+
