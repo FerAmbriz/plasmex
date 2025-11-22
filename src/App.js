@@ -92,15 +92,7 @@ function App() {
   );
 }
 
-const InfoCard = ({ title, text, svg }) => (
-  <div className="info-card">
-    <div className="graphic">{svg}</div>
-    <div className="text">
-      <h3>{title}</h3>
-      <p>{text}</p>
-    </div>
-  </div>
-);
+
 
 export default App;
 
