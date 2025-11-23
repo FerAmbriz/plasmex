@@ -48,16 +48,13 @@ export default function Contacto() {
 
       <section className="section">
 
-        {/* CONTENEDOR 100% */}
-        <div className="servicios-destacados" style={{ padding: "2rem", width: "100%" }}>
+        {/* CARD CONTENEDORA RESPONSIVA */}
+        <div className="contact-card">
 
-          {/* FORM FULL WIDTH */}
           <form 
             onSubmit={enviarCorreo} 
-            className="form-box" 
-            style={{ width: "100%", display: "flex", flexDirection: "column", gap: "1.2rem" }}
+            className="form-box"
           >
-
             <h2>Solicita una Cotización</h2>
 
             <input
@@ -90,24 +87,20 @@ export default function Contacto() {
               required
             ></textarea>
 
-            {/* BOTÓN */}
+            {/* BOTÓN RESPONSIVO */}
             <button 
               type="submit" 
-              className="form-btn" 
-              style={{ width: "10%", display: "block" }}
+              className="form-btn form-btn-full"
             >
               Enviar
             </button>
-
           </form>
 
-          {/* STATUS */}
           {status && (
             <p className={`form-status ${status.includes("Error") ? "error" : ""}`}>
               {status}
             </p>
           )}
-
         </div>
       </section>
     </div>
