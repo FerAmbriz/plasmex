@@ -94,6 +94,20 @@ header.hero p {
   margin-right: auto;
 }
 
+
+.hero {
+  text-align: center; /* centra todo el contenido horizontalmente */
+  padding: 2rem;
+}
+
+.hero-img {
+  display: block;
+  margin: 0 auto 1.5rem auto; /* centra la imagen y separa del texto */
+  max-width: 200px; /* ajusta el tamaño según necesites */
+  height: auto;
+}
+
+
 /* Sections generales */
 .section {
   padding: 4rem 1rem;
