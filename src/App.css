@@ -173,6 +173,7 @@ header.hero p {
 
 /* Servicios Destacados */
 .servicios-destacados {
+  width: 100%;           /* <--- ESTA LÍNEA ES LA CLAVE */
   display: flex;
   flex-wrap: wrap;
   background: #ffffff;
@@ -180,6 +181,8 @@ header.hero p {
   overflow: hidden;
   box-shadow: 0 8px 20px rgba(37,99,235,0.15);
 }
+
+
 .servicio {
   flex: 1; 
   padding: 2rem;
@@ -251,4 +254,78 @@ footer {
   .info-card .text p {font-size:0.9rem;}
   .servicio h3 {font-size:1.4rem;}
   .servicio p {font-size:0.95rem;}
+}
+
+
+/* FORMULARIO DE CONTACTO / COTIZACIÓN */
+.form-box {
+  width: 100%;
+  padding: 2.5rem;
+  padding-right: 70px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.form-box h2 {
+  text-align: center;
+  color: #2563eb;
+  font-size: clamp(1.4rem, 3vw, 1.8rem);
+  margin-bottom: .5rem;
+}
+
+/* Inputs */
+.form-input, .form-textarea {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  font-size: 1rem;
+  border: 2px solid #d1d5db;
+  border-radius: 12px;
+  outline: none;
+  transition: all .25s ease;
+  background: #f9fafb;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  border-color: #2563eb;
+  background: #ffffff;
+  box-shadow: 0 0 8px rgba(37, 99, 235, .25);
+}
+
+/* Textarea */
+.form-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* Botón de envío */
+.form-btn {
+  padding: 0.9rem;
+  font-size: 1.05rem;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.25s ease;
+  display: block;           /* <--- evita que sea inline */
+}
+
+.form-btn:hover {
+  background: #174bb8;
+  box-shadow: 0 6px 18px rgba(37, 99, 235, .25);
+}
+
+/* Mensaje de status */
+.form-status {
+  margin-top: 10px;
+  text-align: center;
+  font-weight: 600;
+  color: #2563eb;
+}
+
+.form-status.error {
+  color: #dc2626;
 }

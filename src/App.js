@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom';
 import './App.css';
 
 import Inicio from './pages/Inicio';
@@ -12,10 +12,33 @@ function App() {
     <Router>
       <div>
         <nav className="navbar">
-          <Link to="/" className="nav-btn">Inicio</Link>
-          <Link to="/productos" className="nav-btn">Productos</Link>
-          <Link to="/servicios" className="nav-btn">Servicios</Link>
-          <Link to="/contacto" className="nav-btn">Contacto</Link>
+          <NavLink 
+            to="/" 
+            className={({ isActive }) => isActive ? "nav-btn active" : "nav-btn"}
+          >
+            Inicio
+          </NavLink>
+
+          <NavLink 
+            to="/productos" 
+            className={({ isActive }) => isActive ? "nav-btn active" : "nav-btn"}
+          >
+            Productos
+          </NavLink>
+
+          <NavLink 
+            to="/servicios" 
+            className={({ isActive }) => isActive ? "nav-btn active" : "nav-btn"}
+          >
+            Servicios
+          </NavLink>
+
+          <NavLink 
+            to="/contacto" 
+            className={({ isActive }) => isActive ? "nav-btn active" : "nav-btn"}
+          >
+            Contacto
+          </NavLink>
         </nav>
 
         <Routes>

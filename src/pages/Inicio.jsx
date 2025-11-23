@@ -1,6 +1,9 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function Inicio() {
+  const navigate = useNavigate();
+
   return (
     <div>
       <header className="hero">
@@ -8,7 +11,14 @@ export default function Inicio() {
         <img src="/plasmex.png" alt="Plasmex Logo" className="hero-img" />
         <p>Plásmidos de Alta Pureza y Trazabilidad Total, Entregados Rápido y con Estándares Industriales</p>
         <p>La solución profesional para biotecnológicas, CDMOs y laboratorios en México que necesitan calidad, documentación sólida y cero retrasos.</p>
-        <button className="cta-btn">Solicitar Cotización en 24 horas</button>
+
+        {/* BOTÓN REDIRIGIDO */}
+        <button
+          className="cta-btn"
+          onClick={() => navigate('/contacto')}
+        >
+          Solicitar Cotización en 24 horas
+        </button>
       </header>
 
       <section className="section">
@@ -19,16 +29,12 @@ export default function Inicio() {
         <p style={{ color:'#000', textAlign:'center', maxWidth:'800px', margin:'0 auto 0.3rem auto' }}>
           Evita aduanas, retrasos y sobrecostos internacionales. Entregamos plásmidos listos para investigación o producción en 3 a 7 días.
         </p>
-        <div className="card-container" id="cards-container"></div>
       </section>
+
 
       <section className="section">
         <h1 style={{ color:'#40bd78ff', textAlign:'center', marginBottom:'3rem' }}>Servicios Destacados</h1>
         <div className="servicios-destacados">
-          <div className="servicio">
-            <h3>Clonación de Plásmidos</h3>
-            <p>Realizamos clonación eficiente y precisa de tus plásmidos, asegurando alta fidelidad y calidad en cada replicación para tus experimentos y proyectos.</p>
-          </div>
           <div className="servicio">
             <h3>Soporte técnico real</h3>
             <p>Contamos con expertos en biología molecular que te guían en el diseño de plásmidos y estrategias de clonación, garantizando resultados confiables y reproducibles.</p>
