@@ -420,3 +420,22 @@ footer {
   height: 80px;
   margin-bottom: 1rem;
 }
+
+
+/* ================================
+   SERVICIOS - MOBILE FIX
+================================ */
+@media (max-width: 768px) {
+  .servicio-card {
+    display: flex;
+    flex-direction: column !important; /* fuerza columna */
+    align-items: center;
+    text-align: center;
+  }
+
+  .servicio-img {
+    margin: 1rem 0 0 0; /* separa imagen del texto */
+    width: 100px;       /* opcional: ajusta tamaño de la imagen en móvil */
+    height: auto;
+  }
+}
