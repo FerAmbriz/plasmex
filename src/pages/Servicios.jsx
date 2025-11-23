@@ -46,27 +46,34 @@ export default function Servicios() {
         </h2>
 
         {servicios.map((servicio, index) => (
-          <div
-            key={index}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              padding: "2rem",
-              backgroundColor: servicio.color, borderRadius: '15px', 
-              flexDirection: index % 2 === 0 ? "row" : "row-reverse"
-            }}
-          >
-            <img
-              src={servicio.img}
-              alt={servicio.title}
-              style={{ width: "250px", height: "auto", margin: "0 2rem", borderRadius: '15px' }}
-            />
-            <div style={{ maxWidth: "600px" }}>
-              <h3>{servicio.title}</h3>
-              <p>{servicio.desc}</p>
-            </div>
-          </div>
-        ))}
+  <div
+    key={index}
+    className="servicio-card"
+    style={{
+      display: "flex",
+      alignItems: "center",
+      padding: "2rem",
+      backgroundColor: servicio.color,
+      borderRadius: "15px",
+      flexDirection: index % 2 === 0 ? "row" : "row-reverse",
+      width: "100%",       // ocupamos todo el ancho
+      boxSizing: "border-box"
+    }}
+  >
+    <img
+      src={servicio.img}
+      alt={servicio.title}
+      className="servicio-img"
+      style={{ width: "250px", height: "auto", margin: "0 2rem", borderRadius: "15px" }}
+    />
+    <div className="servicio-texto" style={{ maxWidth: "600px" }}>
+      <h3>{servicio.title}</h3>
+      <p>{servicio.desc}</p>
+    </div>
+  </div>
+))}
+
+
       </section>
 
       {/* SECCIÓN EXTRA */}

@@ -39,7 +39,7 @@ function App() {
           <Route path="/contacto" element={<Contacto />} />
         </Routes>
 
-        <footer>© 2025 Plasmex. Derechos reservados.</footer>
+        <footer>© 2025 Plasmex</footer>
       </div>
     </Router>
   );

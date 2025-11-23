@@ -387,55 +387,50 @@ footer {
   box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
   z-index: 999;
 }
+
+
 /* ================================
-   servicios
+   SERVICIOS - GENERAL
 ================================ */
-
-.servicios-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  justify-content: center;
-  margin-top: 2rem;
-}
-
 .servicio-card {
-  flex: 1 1 250px;
-  max-width: 300px;
-  background: #fff;
-  padding: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  text-align: center;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.servicio-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 15px;
+  gap: 2rem;
 }
 
 .servicio-img {
-  width: 80px;
-  height: 80px;
-  margin-bottom: 1rem;
+  width: 250px;
+  height: auto;
+  border-radius: 15px;
 }
 
+.servicio-texto {
+  max-width: 600px;
+}
 
 /* ================================
    SERVICIOS - MOBILE FIX
 ================================ */
 @media (max-width: 768px) {
   .servicio-card {
-    display: flex;
-    flex-direction: column !important; /* fuerza columna */
+    flex-direction: column-reverse !important; /* texto arriba de la imagen */
     align-items: center;
     text-align: center;
+    padding: 1.5rem;
   }
 
   .servicio-img {
-    margin: 1rem 0 0 0; /* separa imagen del texto */
-    width: 100px;       /* opcional: ajusta tamaño de la imagen en móvil */
-    height: auto;
+    width: 100%;
+    max-width: 250px;
+    margin: 1rem 0 0 0;
+  }
+
+  .servicio-texto {
+    margin-bottom: 1rem;
   }
 }
