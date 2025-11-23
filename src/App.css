@@ -302,6 +302,7 @@ footer {
 /* Botón de envío */
 .form-btn {
   padding: 0.9rem;
+  min-width: 100px;
   font-size: 1.05rem;
   background: #2563eb;
   color: white;
