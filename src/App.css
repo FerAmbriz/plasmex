@@ -97,7 +97,7 @@ header.hero p {
 ================================ */
 .section {
   padding: 4rem 1rem;
-  max-width: 1200px;
+  max-width: 1700px;
   margin: 0 auto;
 }
 
@@ -386,4 +386,37 @@ footer {
   background: #ffffff;
   box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
   z-index: 999;
+}
+/* ================================
+   servicios
+================================ */
+
+.servicios-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.servicio-card {
+  flex: 1 1 250px;
+  max-width: 300px;
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.servicio-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.servicio-img {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 1rem;
 }

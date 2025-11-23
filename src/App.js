@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-do
 import './App.css';
 
 import Inicio from './pages/Inicio';
-import Productos from './pages/Productos';
 import Servicios from './pages/Servicios';
 import Contacto from './pages/Contacto';
 
@@ -17,13 +16,6 @@ function App() {
             className={({ isActive }) => isActive ? "nav-btn active" : "nav-btn"}
           >
             Inicio
-          </NavLink>
-
-          <NavLink 
-            to="/productos" 
-            className={({ isActive }) => isActive ? "nav-btn active" : "nav-btn"}
-          >
-            Productos
           </NavLink>
 
           <NavLink 
@@ -43,7 +35,6 @@ function App() {
 
         <Routes>
           <Route path="/" element={<Inicio />} />
-          <Route path="/productos" element={<Productos />} />
           <Route path="/servicios" element={<Servicios />} />
           <Route path="/contacto" element={<Contacto />} />
         </Routes>
