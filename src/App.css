@@ -465,3 +465,43 @@ footer {
     padding: 1.5rem;
   }
 }
+
+/* ================================
+   CURSOR PARTICLES & SCROLL ANIMATIONS
+   ================================ */
+
+/* Cursor particle */
+.cursor-particle {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--particle-color, rgba(14, 116, 144, 0.2));
+  pointer-events: none;
+  mix-blend-mode: overlay;
+  will-change: transform, opacity;
+  z-index: 9999;
+}
+
+/* Scroll animation utilities */
+.scroll-fade {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.scroll-fade.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scroll-slide-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.scroll-slide-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
