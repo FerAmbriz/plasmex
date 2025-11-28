@@ -1,94 +1,74 @@
 import React from 'react';
 
 export default function Servicios() {
-  const servicios = [
+  const steps = [
     {
-      img: "/produccion.png",
-      title: "Producción y purificación de plásmidos",
-      desc: "Plásmidos Research Grade, High Quality y GMP-like con endotoxina baja, pureza validada por electroforesis y documentación lista para auditorías COFEPRIS/EMA.",
-      color: "#ffffffff" // Color de fondo de la sección
+      number: "01",
+      title: "Diseño y Optimización",
+      desc: "Todo comienza con el diseño perfecto. Estructuramos mapas de plásmidos, ORFs, promotores y sistemas de selección optimizados para una expresión estable o transitoria en tu sistema de interés."
     },
     {
-      img: "/diseno.png",
-      title: "Diseño y optimización de plásmidos",
-      desc: "Te ayudamos a estructurar mapas de plásmidos, ORFs, promotores, sistemas de selección y optimización para expresión estable o transitoria.",
-      color: "#f5f7fa"
+      number: "02",
+      title: "Clonación Genética",
+      desc: "Materializamos el diseño. Utilizamos técnicas avanzadas como Gibson Assembly o Golden Gate, verificando cada construcción mediante secuenciación para garantizar precisión absoluta."
     },
     {
-      img: "/clonacion.png",
-      title: "Clonación y construcción genética",
-      desc: "Servicios de clonación por enzimas, Gibson Assembly o Golden Gate, con verificación por secuenciación y reportes completos.",
-      color: "#ffffffff"
+      number: "03",
+      title: "Producción y Purificación",
+      desc: "Escalamos tu proyecto. Producimos plásmidos Research Grade, High Quality o GMP-like con pureza validada y niveles de endotoxina controlados, listos para su aplicación."
     },
     {
-      img: "/consultoria.png",
-      title: "Consultoría en biología molecular",
-      desc: "Acompañamiento técnico directo por expertos para resolver problemas de expresión, estabilidad de plásmidos o estrategias de escalamiento.",
-      color: "#f5f7fa"
+      number: "04",
+      title: "Integración Industrial",
+      desc: "Llevamos tu desarrollo al siguiente nivel. Ofrecemos consultoría para la integración de estos plásmidos en entornos industriales escalables, asegurando reproducibilidad lote tras lote."
     }
   ];
 
   return (
-    <div>
+    <div className="animate-fade-in">
       {/* HERO */}
-      <header className="hero">
-        <h1>Servicios</h1>
-        <p style={{ maxWidth: "800px", margin: "0.5rem auto", fontSize: "1.2rem" }}>
-          Soluciones profesionales en producción, purificación y documentación de plásmidos,
-          diseñadas para biotecnológicas, CDMOs y laboratorios que necesitan calidad real.
+      <header className="hero" style={{ minHeight: '50vh' }}>
+        <h1 className="section-title" style={{ marginBottom: '1rem' }}>
+          De la Idea a la <span>Escala Industrial</span>
+        </h1>
+        <p className="hero-subtitle animate-slide-up delay-1">
+          Soluciones integrales en ingeniería genética para biotecnológicas que exigen calidad, rapidez y escalabilidad.
         </p>
       </header>
 
-      {/* SECCIÓN DE SERVICIOS */}
+      {/* STORYTELLING SECTION */}
       <section className="section">
-        <h2 style={{ color:'#40bd78ff', textAlign:'center', marginBottom:'2rem' }}>
-          ¿Qué ofrecemos?
-        </h2>
-
-        {servicios.map((servicio, index) => (
-  <div
-    key={index}
-    className="servicio-card"
-    style={{
-      display: "flex",
-      alignItems: "center",
-      padding: "2rem",
-      backgroundColor: servicio.color,
-      borderRadius: "15px",
-      flexDirection: index % 2 === 0 ? "row" : "row-reverse",
-      width: "100%",       // ocupamos todo el ancho
-      boxSizing: "border-box"
-    }}
-  >
-    <img
-      src={servicio.img}
-      alt={servicio.title}
-      className="servicio-img"
-      style={{ width: "250px", height: "auto", margin: "0 2rem", borderRadius: "15px" }}
-    />
-    <div className="servicio-texto" style={{ maxWidth: "600px" }}>
-      <h3>{servicio.title}</h3>
-      <p>{servicio.desc}</p>
-    </div>
-  </div>
-))}
-
-
+        <div className="story-container">
+          {steps.map((step, index) => (
+            <div key={index} className={`story-step animate-slide-up delay-${(index % 3) + 1}`}>
+              <div className="story-content">
+                <div className="story-number">{step.number}</div>
+                <h3 className="story-title">{step.title}</h3>
+                <p>{step.desc}</p>
+              </div>
+              {/* Placeholder for visual balance or future abstract graphic */}
+              <div className="story-content" style={{ display: 'flex', justifyContent: 'center' }}>
+                <div style={{
+                  width: '100px',
+                  height: '100px',
+                  borderRadius: '50%',
+                  background: 'var(--bg-soft)',
+                  border: '1px solid rgba(14, 165, 233, 0.1)'
+                }}></div>
+              </div>
+            </div>
+          ))}
+        </div>
       </section>
 
-      {/* SECCIÓN EXTRA */}
-      <section className="section">
-        <h2 style={{ color:'#40bd78ff', textAlign:'center', marginBottom:'1rem' }}>
-          ¿Por qué Plasmex?
+      {/* FINAL CTA */}
+      <section className="section" style={{ textAlign: 'center' }}>
+        <h2 className="section-title" style={{ fontSize: '2rem', marginBottom: '2rem' }}>
+          ¿Por qué elegir <span>Plasmex</span>?
         </h2>
-
-        <p style={{
-          textAlign: 'center',
-          maxWidth: '800px',
-          margin: '0 auto 1rem auto'
-        }}>
-          Eliminamos tiempos muertos, importaciones y retrasos. Nuestro enfoque está en
-          calidad reproducible, comunicación clara y entrega rápida.
+        <p style={{ maxWidth: '800px', margin: '0 auto 3rem auto', fontSize: '1.1rem' }}>
+          Eliminamos la incertidumbre de las importaciones y los tiempos muertos.
+          Nuestro enfoque se centra en la calidad reproducible, la comunicación transparente y la entrega rápida.
         </p>
       </section>
     </div>

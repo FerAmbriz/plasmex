@@ -31,73 +31,78 @@ export default function Contacto() {
       },
       "WJsJ9u1DmjeEHuzFL"
     )
-    .then(() => {
-      setStatus("Tu solicitud se ha enviado correctamente.");
-      setFormData({ nombre: "", email: "", mensaje: "" });
-    })
-    .catch(() => {
-      setStatus("Error al enviar el mensaje, intenta de nuevo.");
-    });
+      .then(() => {
+        setStatus("Tu solicitud se ha enviado correctamente.");
+        setFormData({ nombre: "", email: "", mensaje: "" });
+      })
+      .catch(() => {
+        setStatus("Error al enviar el mensaje, intenta de nuevo.");
+      });
   };
 
   return (
-    <div>
-      <header className="hero">
-        <h1>Contacto</h1>
+    <div className="animate-fade-in">
+      <header className="hero" style={{ minHeight: '40vh' }}>
+        <h1 className="section-title" style={{ marginBottom: '1rem' }}>
+          Inicia tu <span>Proyecto</span>
+        </h1>
+        <p className="hero-subtitle animate-slide-up delay-1">
+          Cuéntanos tus necesidades y recibe una cotización personalizada en menos de 24 horas.
+        </p>
       </header>
 
       <section className="section">
+        <div className="contact-wrapper animate-slide-up delay-2">
+          <form onSubmit={enviarCorreo}>
+            <div className="form-group">
+              <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>Nombre</label>
+              <input
+                type="text"
+                name="nombre"
+                className="minimal-input"
+                placeholder="Tu nombre completo"
+                value={formData.nombre}
+                onChange={handleChange}
+                required
+              />
+            </div>
 
-        {/* CARD CONTENEDORA RESPONSIVA */}
-        <div className="contact-card">
+            <div className="form-group">
+              <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>Correo Electrónico</label>
+              <input
+                type="email"
+                name="email"
+                className="minimal-input"
+                placeholder="nombre@empresa.com"
+                value={formData.email}
+                onChange={handleChange}
+                required
+              />
+            </div>
 
-          <form 
-            onSubmit={enviarCorreo} 
-            className="form-box"
-          >
-            <h2>Solicita una Cotización</h2>
+            <div className="form-group">
+              <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>Detalles del Proyecto</label>
+              <textarea
+                name="mensaje"
+                className="minimal-textarea"
+                placeholder="Describe los plásmidos, cantidades o servicios que necesitas..."
+                value={formData.mensaje}
+                onChange={handleChange}
+                required
+              ></textarea>
+            </div>
 
-            <input
-              type="text"
-              name="nombre"
-              className="form-input"
-              placeholder="Tu nombre"
-              value={formData.nombre}
-              onChange={handleChange}
-              required
-            />
-
-            <input
-              type="email"
-              name="email"
-              className="form-input"
-              placeholder="Tu correo"
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
-
-            <textarea
-              name="mensaje"
-              className="form-textarea"
-              placeholder="Describe la cotización que deseas"
-              rows="5"
-              value={formData.mensaje}
-              onChange={handleChange}
-              required
-            ></textarea>
-
-            {/* BOTÓN RESPONSIVO */}
-            <button 
-              type="submit" 
-              className="form-btn form-btn-full"
+            <button
+              type="submit"
+              className="cta-btn"
+              style={{ width: '100%', borderRadius: 'var(--radius-md)' }}
             >
-              Enviar
+              Enviar Solicitud
             </button>
           </form>
 
           {status && (
-            <p className={`form-status ${status.includes("Error") ? "error" : ""}`}>
+            <p className={`form-status ${status.includes("Error") ? "error" : ""}`} style={{ marginTop: '1.5rem', textAlign: 'center' }}>
               {status}
             </p>
           )}
