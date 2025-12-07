@@ -1,11 +1,14 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import ParticleBackground from '../components/ParticleBackground';
 
 export default function Inicio() {
   const navigate = useNavigate();
 
   return (
-    <div className="animate-fade-in">
+    <div className="animate-fade-in relative">
+      <ParticleBackground />
+
       {/* HERO SECTION */}
       <header className="hero">
         <div className="typewriter-container">
@@ -13,47 +16,54 @@ export default function Inicio() {
         </div>
 
         <p className="hero-subtitle reveal-text delay-1">
-          Plásmidos de alta pureza y trazabilidad total.
+          Innovación en ingeniería genética.
           <br />
-          La solución definitiva para biotecnológicas y laboratorios en México.
+          <span className="text-highlight">Plásmidos de pureza industrial</span> y trazabilidad certificada para potenciar tu investigación.
         </p>
 
         <button
           className="cta-btn reveal-text delay-2"
           onClick={() => navigate('/contacto')}
         >
-          Solicitar Cotización
+          Iniciar Proyecto
         </button>
+
+        <div className="scroll-indicator reveal-text delay-3">
+          <span className="mouse">
+            <span className="wheel"></span>
+          </span>
+          <p>Descubre más</p>
+        </div>
       </header>
 
       {/* VALUE PROPOSITION */}
       <section className="section">
         <h2 className="section-title reveal-text delay-3">
-          Nuestro <span>Compromiso</span>
+          Excelencia <span>Científica</span>
         </h2>
 
         <div className="card-container">
           <div className="spotlight-card reveal-text delay-1">
-            <h3>Calidad Industrial</h3>
+            <h3>Calidad Certificada</h3>
             <p>
-              Producimos y purificamos plásmidos con documentación completa,
-              pureza validada y control de endotoxina compatible con estándares internacionales.
+              Estándares farmacéuticos en cada síntesis. Documentación exhaustiva
+              y control de endotoxinas riguroso para resultados inquebrantables.
             </p>
           </div>
 
           <div className="spotlight-card reveal-text delay-2">
-            <h3>Rapidez y Eficiencia</h3>
+            <h3>Velocidad Crítica</h3>
             <p>
-              Evita aduanas y retrasos. Entregamos plásmidos listos para
-              investigación o producción en tiempos récord de 3 a 7 días.
+              Tu tiempo es valioso. Entregamos plásmidos listos para transfección
+              en <strong>3 a 5 días hábiles</strong>, eliminando barreras logísticas.
             </p>
           </div>
 
           <div className="spotlight-card reveal-text delay-3">
-            <h3>Soporte Experto</h3>
+            <h3>Asesoría Especializada</h3>
             <p>
-              Acompañamiento técnico real por expertos en biología molecular
-              para garantizar resultados confiables y reproducibles.
+              Más que proveedores, somos tus socios científicos. Soporte directo
+              de doctores en biología molecular en cada etapa de tu proyecto.
             </p>
           </div>
         </div>

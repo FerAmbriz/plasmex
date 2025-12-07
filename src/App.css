@@ -189,6 +189,7 @@ header.hero {
   /* Top padding for navbar */
   position: relative;
   overflow: hidden;
+  /* Removed bg gradient as we have particles now, or keep as subtle base */
   background: radial-gradient(circle at 50% 50%, rgba(34, 211, 238, 0.03) 0%, transparent 50%);
 }
 
@@ -225,6 +226,11 @@ header.hero {
   color: var(--text-light);
 }
 
+.text-highlight {
+    color: var(--primary-teal);
+    font-weight: 600;
+}
+
 .cta-btn {
   background: var(--primary-teal);
   color: white;
@@ -245,6 +251,62 @@ header.hero {
   transform: translateY(-2px) scale(1.02);
   box-shadow: var(--shadow-hover);
 }
+
+/* Scroll Indicator */
+.scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+}
+
+.scroll-indicator:hover {
+    opacity: 1;
+}
+
+.mouse {
+    width: 26px;
+    height: 42px;
+    border: 2px solid var(--text-light);
+    border-radius: 20px;
+    position: relative;
+}
+
+.wheel {
+    width: 4px;
+    height: 8px;
+    background: var(--primary-teal);
+    border-radius: 2px;
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: scrollWheel 1.5s infinite;
+}
+
+@keyframes scrollWheel {
+    0% {
+        top: 6px;
+        opacity: 1;
+    }
+    100% {
+        top: 24px;
+        opacity: 0;
+    }
+}
+
+.scroll-indicator p {
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
 
 /* ================================
    SECTIONS & CARDS (SPOTLIGHT)
@@ -434,7 +496,15 @@ footer {
     bottom: 1.5rem;
     /* Bottom nav on mobile for easier reach */
     width: 90%;
-    justify-content: space-around;
+    max-width: 400px; /* Constrain max width so it doesn't look stretched */
+    justify-content: space-evenly; /* Better spacing */
+    padding: 0.8rem 0.5rem; /* Reduce padding to fit */
+    font-size: 0.8rem; /* Use specific nav-btn fix below */
+  }
+
+  .nav-btn {
+      padding: 0.5rem 0.8rem;
+      font-size: 0.85rem;
   }
 
   header.hero {
@@ -485,23 +555,23 @@ footer {
 
 /* Scroll animation utilities */
 .scroll-fade {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
-
-.scroll-fade.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.scroll-slide-up {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
-
-.scroll-slide-up.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+  
+  .scroll-fade.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .scroll-slide-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+  
+  .scroll-slide-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }

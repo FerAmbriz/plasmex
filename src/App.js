@@ -5,6 +5,7 @@ import './App.css';
 import Inicio from './pages/Inicio';
 import Servicios from './pages/Servicios';
 import Contacto from './pages/Contacto';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   const appRef = useRef(null);
@@ -29,6 +30,7 @@ function App() {
 
   return (
     <Router>
+      <ScrollToTop />
       <div ref={appRef}>
         <nav className="navbar">
           <NavLink
