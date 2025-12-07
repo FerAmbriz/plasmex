@@ -27,13 +27,6 @@ export default function Inicio() {
         >
           Iniciar Proyecto
         </button>
-
-        <div className="scroll-indicator reveal-text delay-3">
-          <span className="mouse">
-            <span className="wheel"></span>
-          </span>
-          <p>Descubre más</p>
-        </div>
       </header>
 
       {/* VALUE PROPOSITION */}
