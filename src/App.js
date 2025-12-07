@@ -33,26 +33,32 @@ function App() {
       <ScrollToTop />
       <div ref={appRef}>
         <nav className="navbar">
-          <NavLink
-            to="/"
-            className={({ isActive }) => isActive ? "nav-btn active" : "nav-btn"}
-          >
-            Inicio
+          <NavLink to="/" className="nav-logo-link">
+            <img src="/logo.png" alt="Plasmex Biotech" className="nav-logo" />
           </NavLink>
 
-          <NavLink
-            to="/servicios"
-            className={({ isActive }) => isActive ? "nav-btn active" : "nav-btn"}
-          >
-            Servicios
-          </NavLink>
+          <div className="nav-links">
+            <NavLink
+              to="/"
+              className={({ isActive }) => isActive ? "nav-btn active" : "nav-btn"}
+            >
+              Inicio
+            </NavLink>
 
-          <NavLink
-            to="/contacto"
-            className={({ isActive }) => isActive ? "nav-btn active" : "nav-btn"}
-          >
-            Contacto
-          </NavLink>
+            <NavLink
+              to="/servicios"
+              className={({ isActive }) => isActive ? "nav-btn active" : "nav-btn"}
+            >
+              Servicios
+            </NavLink>
+
+            <NavLink
+              to="/contacto"
+              className={({ isActive }) => isActive ? "nav-btn active" : "nav-btn"}
+            >
+              Contacto
+            </NavLink>
+          </div>
         </nav>
 
         <Routes>
