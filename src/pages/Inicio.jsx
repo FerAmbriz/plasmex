@@ -11,6 +11,7 @@ export default function Inicio() {
 
       {/* HERO SECTION */}
       <header className="hero">
+        <img src="/logo.png" alt="Plasmex Logo" className="hero-logo" />
         <div className="typewriter-container">
           <h1 className="typewriter-text">Plasmex Biotech</h1>
         </div>

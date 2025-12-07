@@ -219,6 +219,26 @@ header.hero {
   background: radial-gradient(circle at 50% 50%, rgba(34, 211, 238, 0.03) 0%, transparent 50%);
 }
 
+.hero-logo {
+  max-width: 150px;
+  height: auto;
+  margin-bottom: 2rem;
+  filter: drop-shadow(0 0 20px rgba(34, 211, 238, 0.3));
+  animation: floatLogo 6s ease-in-out infinite;
+}
+
+@keyframes floatLogo {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
 /* Typewriter Effect Container */
 .typewriter-container {
   display: inline-block;
