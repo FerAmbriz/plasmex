@@ -11,11 +11,11 @@ export default function DnaHelixAnimation() {
     // Clear any existing children to prevent double-initialization
     svg.selectAll("*").remove();
 
-    // Enlarged dimensions
-    const width = 500;
-    const height = 360;
-    const centerY = height / 2;
-    const N = 18; // More base pairs to cover the wider area
+    // Wider and taller vertical dimensions
+    const width = 480;
+    const height = 540;
+    const centerX = width / 2;
+    const N = 20; // Increased base pairs for a taller vertical stretch
 
     // Nucleotide configurations
     const nucleotides = ['A', 'T', 'C', 'G'];
@@ -27,9 +27,9 @@ export default function DnaHelixAnimation() {
       G: '#ea580c', // Orange/Amber
     };
 
-    // Calculate spacing along the x-axis
-    const paddingX = 45;
-    const spacing = (width - paddingX * 2) / (N - 1);
+    // Calculate spacing along the y-axis
+    const paddingY = 45;
+    const spacing = (height - paddingY * 2) / (N - 1);
 
     // Generate base pair data
     const dnaData = Array.from({ length: N }, (_, i) => {
@@ -37,15 +37,15 @@ export default function DnaHelixAnimation() {
       const base2 = pairMap[base1];
       return {
         id: i,
-        x: paddingX + i * spacing,
+        y: paddingY + i * spacing, // y coordinate is fixed
         base1,
         base2,
         color1: nucleotideColors[base1],
         color2: nucleotideColors[base2],
         localTime: 0,
         e: 0, // current expansion factor
-        y1: centerY,
-        y2: centerY,
+        x1: centerX,
+        x2: centerX,
         angle: 0,
       };
     });
@@ -53,31 +53,31 @@ export default function DnaHelixAnimation() {
     // 1. Append Gradients and Definitions
     const defs = svg.append('defs');
 
-    // Gradient for Strand 1
+    // Gradient for Strand 1 (Vertical)
     const grad1 = defs
       .append('linearGradient')
       .attr('id', 'vector-blue')
       .attr('x1', '0%')
       .attr('y1', '0%')
-      .attr('x2', '100%')
+      .attr('x2', '0%')
       .attr('y2', '100%');
     grad1.append('stop').attr('offset', '0%').attr('stop-color', '#1e3a8a');
     grad1.append('stop').attr('offset', '100%').attr('stop-color', '#3b82f6');
 
-    // Gradient for Strand 2
+    // Gradient for Strand 2 (Vertical)
     const grad2 = defs
       .append('linearGradient')
       .attr('id', 'vector-grey')
       .attr('x1', '0%')
       .attr('y1', '0%')
-      .attr('x2', '100%')
+      .attr('x2', '0%')
       .attr('y2', '100%');
     grad2.append('stop').attr('offset', '0%').attr('stop-color', '#475569');
     grad2.append('stop').attr('offset', '100%').attr('stop-color', '#94a3b8');
 
     // Glow filter for interactive nucleotides
     const filter = defs.append('filter').attr('id', 'glow').attr('x', '-20%').attr('y', '-20%').attr('width', '140%').attr('height', '140%');
-    filter.append('feGaussianBlur').attr('stdDeviation', '2.5').attr('result', 'blur');
+    filter.append('feGaussianBlur').attr('stdDeviation', '3').attr('result', 'blur');
     const feMerge = filter.append('feMerge');
     feMerge.append('feMergeNode').attr('in', 'blur');
     feMerge.append('feMergeNode').attr('in', 'SourceGraphic');
@@ -87,19 +87,19 @@ export default function DnaHelixAnimation() {
     // Group for rungs (connecting lines)
     const rungsGroup = svg.append('g').attr('class', 'rungs');
     
-    // Paths for outer backbones (filaments, slightly thicker)
+    // Paths for outer backbones (filaments)
     const strand1Path = svg
       .append('path')
       .attr('fill', 'none')
       .attr('stroke', 'url(#vector-blue)')
-      .attr('stroke-width', 5.5)
+      .attr('stroke-width', 6)
       .attr('stroke-linecap', 'round');
 
     const strand2Path = svg
       .append('path')
       .attr('fill', 'none')
       .attr('stroke', 'url(#vector-grey)')
-      .attr('stroke-width', 4)
+      .attr('stroke-width', 4.5)
       .attr('stroke-linecap', 'round');
 
     // Group for nucleotides (nodes) and letters
@@ -120,8 +120,8 @@ export default function DnaHelixAnimation() {
       .append('circle')
       .attr('fill', '#ffffff')
       .attr('stroke', '#cbd5e1')
-      .attr('stroke-width', 1.2)
-      .attr('r', 2)
+      .attr('stroke-width', 1.5)
+      .attr('r', 2.5)
       .attr('opacity', 0);
 
     const nodePairs = nodesGroup
@@ -189,7 +189,7 @@ export default function DnaHelixAnimation() {
       })
       .on('touchend', handleMouseLeave);
 
-    // Line generator for backbones
+    // Line generator for backbones (curved vertically)
     const lineGenerator = d3
       .line()
       .x((d) => d.x)
@@ -203,15 +203,15 @@ export default function DnaHelixAnimation() {
       const dt = (elapsed - lastElapsed) * 0.001; // delta time in seconds
       lastElapsed = elapsed;
 
-      const R_influence = 120; // Expanded mouse interaction radius for larger helix
+      const R_influence = 140; // Wider mouse interaction radius for larger canvas
 
       // Update positions and calculations for each base pair
       dnaData.forEach((d, i) => {
         // Calculate proximity target expansion
         let targetE = 0;
         if (mouse.x !== null && mouse.y !== null) {
-          const dx = mouse.x - d.x;
-          const dy = mouse.y - centerY;
+          const dx = mouse.x - centerX;
+          const dy = mouse.y - d.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < R_influence) {
             // Gaussian-like dropoff for smooth bubble transition
@@ -227,77 +227,76 @@ export default function DnaHelixAnimation() {
         const currentSpeed = baseSpeed * (1.0 - d.e * 0.85);
         d.localTime += dt * currentSpeed;
 
-        // Calculate phase angle with horizontal waves index offset
-        d.angle = d.localTime + i * 0.45;
+        // Calculate phase angle with vertical waves index offset
+        d.angle = d.localTime + i * 0.42;
 
-        // Helix radius expands from 30px (collapsed) to 85px (expanded)
-        const R = 30 + d.e * 55;
+        // Helix radius expands from 40px (collapsed) to 110px (expanded)
+        const R = 40 + d.e * 70;
 
-        // Compute 3D Y coordinates
-        d.y1 = centerY + R * Math.sin(d.angle);
-        d.y2 = centerY - R * Math.sin(d.angle);
+        // Compute 3D X coordinates (DNA is vertical, so it twists left and right)
+        d.x1 = centerX + R * Math.sin(d.angle);
+        d.x2 = centerX - R * Math.sin(d.angle);
       });
 
-      // Update Backbone paths
-      strand1Path.attr('d', lineGenerator(dnaData.map((d) => ({ x: d.x, y: d.y1 }))));
-      strand2Path.attr('d', lineGenerator(dnaData.map((d) => ({ x: d.x, y: d.y2 }))));
+      // Update Backbone paths (x changes dynamically, y is static for each node)
+      strand1Path.attr('d', lineGenerator(dnaData.map((d) => ({ x: d.x1, y: d.y }))));
+      strand2Path.attr('d', lineGenerator(dnaData.map((d) => ({ x: d.x2, y: d.y }))));
 
-      // Update Rungs (thicker when expanded)
+      // Update Rungs (horizontal lines running from outer strands to center axis)
       rungLine1
-        .attr('x1', (d) => d.x)
-        .attr('y1', (d) => d.y1)
-        .attr('x2', (d) => d.x)
-        .attr('y2', centerY)
+        .attr('x1', (d) => d.x1)
+        .attr('y1', (d) => d.y)
+        .attr('x2', centerX)
+        .attr('y2', (d) => d.y)
         .attr('stroke', (d) => (d.e > 0.05 ? d.color1 : '#cbd5e1'))
-        .attr('stroke-width', (d) => 2.0 + d.e * 2.0)
+        .attr('stroke-width', (d) => 2.5 + d.e * 2.5)
         .attr('opacity', (d) => 0.2 + d.e * 0.75);
 
       rungLine2
-        .attr('x1', (d) => d.x)
-        .attr('y1', (d) => d.y2)
-        .attr('x2', (d) => d.x)
-        .attr('y2', centerY)
+        .attr('x1', (d) => d.x2)
+        .attr('y1', (d) => d.y)
+        .attr('x2', centerX)
+        .attr('y2', (d) => d.y)
         .attr('stroke', (d) => (d.e > 0.05 ? d.color2 : '#cbd5e1'))
-        .attr('stroke-width', (d) => 2.0 + d.e * 2.0)
+        .attr('stroke-width', (d) => 2.5 + d.e * 2.5)
         .attr('opacity', (d) => 0.2 + d.e * 0.75);
 
       centerDot
-        .attr('cx', (d) => d.x)
-        .attr('cy', centerY)
+        .attr('cx', centerX)
+        .attr('cy', (d) => d.y)
         .attr('opacity', (d) => d.e)
-        .attr('r', (d) => 2.0 + d.e * 2.0);
+        .attr('r', (d) => 2.5 + d.e * 2.5);
 
-      // Update Node Circles (Enlarged)
+      // Update Node Circles (Enlarged and dynamic: grows to max 15px)
       node1
-        .attr('cx', (d) => d.x)
-        .attr('cy', (d) => d.y1)
-        // Size modulated by depth (cos(angle)) and expansion factor (grows to max 12.5px)
-        .attr('r', (d) => (4.5 + d.e * 8.0) * (1.0 + 0.22 * Math.cos(d.angle)))
+        .attr('cx', (d) => d.x1)
+        .attr('cy', (d) => d.y)
+        // Size modulated by depth (cos(angle)) and expansion factor
+        .attr('r', (d) => (5.0 + d.e * 10.0) * (1.0 + 0.22 * Math.cos(d.angle)))
         .attr('fill', (d) => (d.e > 0.08 ? d.color1 : '#64748b'))
         .attr('opacity', (d) => 0.35 + d.e * 0.65 * (Math.cos(d.angle) + 1.2) / 2.2)
         .attr('filter', (d) => (d.e > 0.3 ? 'url(#glow)' : null));
 
       node2
-        .attr('cx', (d) => d.x)
-        .attr('cy', (d) => d.y2)
-        .attr('r', (d) => (4.5 + d.e * 8.0) * (1.0 - 0.22 * Math.cos(d.angle)))
+        .attr('cx', (d) => d.x2)
+        .attr('cy', (d) => d.y)
+        .attr('r', (d) => (5.0 + d.e * 10.0) * (1.0 - 0.22 * Math.cos(d.angle)))
         .attr('fill', (d) => (d.e > 0.08 ? d.color2 : '#64748b'))
         .attr('opacity', (d) => 0.35 + d.e * 0.65 * (1.2 - Math.cos(d.angle)) / 2.2)
         .attr('filter', (d) => (d.e > 0.3 ? 'url(#glow)' : null));
 
-      // Update Nucleotide Letter Texts (Enlarged and aligned)
+      // Update Nucleotide Letter Texts (Enlarged)
       text1
-        .attr('x', (d) => d.x)
-        .attr('y', (d) => d.y1)
+        .attr('x', (d) => d.x1)
+        .attr('y', (d) => d.y)
         .attr('opacity', (d) => d.e)
-        // Scale font size based on 3D depth and hover expansion factor (grows to max ~12.5px)
-        .style('font-size', (d) => `${(6.0 + d.e * 6.5) * (1.0 + 0.22 * Math.cos(d.angle))}px`);
+        .style('font-size', (d) => `${(6.5 + d.e * 8.5) * (1.0 + 0.22 * Math.cos(d.angle))}px`);
 
       text2
-        .attr('x', (d) => d.x)
-        .attr('y', (d) => d.y2)
+        .attr('x', (d) => d.x2)
+        .attr('y', (d) => d.y)
         .attr('opacity', (d) => d.e)
-        .style('font-size', (d) => `${(6.0 + d.e * 6.5) * (1.0 - 0.22 * Math.cos(d.angle))}px`);
+        .style('font-size', (d) => `${(6.5 + d.e * 8.5) * (1.0 - 0.22 * Math.cos(d.angle))}px`);
     });
 
     return () => {
@@ -309,9 +308,9 @@ export default function DnaHelixAnimation() {
     <svg
       ref={svgRef}
       width="100%"
-      height="360"
-      viewBox="0 0 500 360"
-      style={{ maxWidth: '460px', height: 'auto' }}
+      height="540"
+      viewBox="0 0 480 540"
+      style={{ maxWidth: '480px', height: 'auto' }}
       className="hero-vector-svg"
     />
   );
