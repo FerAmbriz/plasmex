@@ -244,7 +244,7 @@ export default function Servicios() {
 
       {/* CALL TO ACTION */}
       <section className="section" style={{ paddingTop: '2rem' }}>
-        <div className="spotlight-card" style={{ maxWidth: '850px', margin: '0 auto', padding: '4rem 3rem', alignItems: 'center', textAlign: 'center' }}>
+        <div className="spotlight-card cta-spotlight-card">
           <h2 className="section-title" style={{ marginBottom: '1.5rem', fontSize: '2.2rem' }}>
             ¿Listo para <span>Acelerar tu Investigación</span>?
           </h2>

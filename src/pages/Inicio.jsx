@@ -157,19 +157,19 @@ export default function Inicio() {
       
       {/* 2-COLUMN HERO SECTION (CORPORATE & MINIMALIST) */}
       <header className="hero" style={{ minHeight: '75vh', paddingBottom: '3rem' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1.1fr 0.9fr', gap: '3rem', maxWidth: '1200px', width: '100%', margin: '0 auto', textAlign: 'left', alignItems: 'center', padding: '0 2rem' }}>
+        <div className="hero-grid">
           
           {/* Left Column: Copywriting and Two Large Buttons */}
           <div>
             <span style={{ fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.15em', color: 'var(--primary-light)', fontWeight: '700' }}>Suministro Genético Local</span>
-            <h1 className="hero-title" style={{ fontSize: '3rem', marginTop: '0.5rem', marginBottom: '1.5rem', lineHeight: '1.2' }}>
+            <h1 className="hero-title" style={{ marginTop: '0.5rem', marginBottom: '1.5rem', lineHeight: '1.2' }}>
               Plásmidos de <span>Pureza Certificada</span> para Investigación
             </h1>
-            <p className="hero-subtitle" style={{ margin: '0 0 2.5rem 0', fontSize: '1.1rem', lineHeight: '1.6' }}>
+            <p className="hero-subtitle">
               Aceleramos la biología molecular en México eliminando las trabas aduanales de importación. Sintetizamos, clonamos y purificamos vectores listos para transfectar con secuenciación NGS de trazabilidad completa.
             </p>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', maxWidth: '420px' }}>
+            <div className="hero-buttons">
               {/* Button 1: Customizer scroll */}
               <button 
                 className="cta-btn" 
@@ -302,7 +302,7 @@ export default function Inicio() {
 
       {/* PERSUASIVE SCIENCE CALLOUT */}
       <section className="section" style={{ paddingTop: '0', paddingBottom: '2rem' }}>
-        <div className="spotlight-card" style={{ maxWidth: '900px', margin: '0 auto', background: '#f8fafc', padding: '2.5rem', textAlign: 'center', alignItems: 'center' }}>
+        <div className="spotlight-card science-spotlight-card">
           <span style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '0.12em', color: 'var(--primary-teal)', fontWeight: '800' }}>🧬 Control de Inmunogenicidad</span>
           <h3 style={{ fontSize: '1.35rem', marginTop: '0.5rem', marginBottom: '1rem', lineHeight: '1.4' }}>
             Una transfección con plásmidos superenrollados libres de endotoxinas incrementa la viabilidad celular hasta en un 400%
@@ -329,12 +329,11 @@ export default function Inicio() {
           <div className="constructor-controls">
             
             {/* Header Tabs */}
-            <div style={{ display: 'flex', gap: '0.25rem', borderBottom: '1px solid var(--border-glass)', paddingBottom: '0.75rem', marginBottom: '1.25rem' }}>
+            <div className="constructor-tabs">
               <button 
                 type="button" 
                 className={`nav-btn ${activeTab === 'parts' ? 'active' : ''}`}
                 onClick={() => setActiveTab('parts')}
-                style={{ fontSize: '0.85rem', padding: '0.4rem 0.8rem' }}
               >
                 Partes Moleculares
               </button>
@@ -342,7 +341,6 @@ export default function Inicio() {
                 type="button" 
                 className={`nav-btn ${activeTab === 'sequence' ? 'active' : ''}`}
                 onClick={() => setActiveTab('sequence')}
-                style={{ fontSize: '0.85rem', padding: '0.4rem 0.8rem' }}
               >
                 Editor de Secuencia (ADN)
               </button>
@@ -350,7 +348,6 @@ export default function Inicio() {
                 type="button" 
                 className={`nav-btn ${activeTab === 'gel' ? 'active' : ''}`}
                 onClick={() => setActiveTab('gel')}
-                style={{ fontSize: '0.85rem', padding: '0.4rem 0.8rem' }}
               >
                 Digestión y Gel
               </button>
