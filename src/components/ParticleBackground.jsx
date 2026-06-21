@@ -6,6 +6,7 @@ const ParticleBackground = () => {
     useEffect(() => {
         const canvas = canvasRef.current;
         const ctx = canvas.getContext('2d');
+        if (!ctx) return;
         let particles = [];
         let animationFrameId;
 
@@ -44,13 +45,15 @@ const ParticleBackground = () => {
                 this.vx = (Math.random() - 0.5) * 0.5;
                 this.vy = (Math.random() - 0.5) * 0.5;
                 // Larger size
-                this.size = Math.random() * 4 + 2; // 2 to 6px
+                // Larger, softer size for out-of-focus biological cell look
+                this.size = Math.random() * 8 + 4; // 4 to 12px
                 this.baseSize = this.size;
 
-                // Color: Teal/Cyan shades
-                const colors = ['rgba(14, 116, 144, ', 'rgba(34, 211, 238, ', 'rgba(255, 255, 255, '];
+                // Color: Soft pastel shades (Sky blue, Violet, Rose)
+                const colors = ['rgba(56, 189, 248, ', 'rgba(165, 180, 252, ', 'rgba(251, 207, 232, '];
                 this.baseColor = colors[Math.floor(Math.random() * colors.length)];
-                this.alpha = Math.random() * 0.5 + 0.2;
+                this.alpha = Math.random() * 0.15 + 0.05; // Low opacity for subtle look
+
 
                 // For wave motion
                 this.angle = Math.random() * Math.PI * 2;

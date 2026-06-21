@@ -13,13 +13,14 @@ function App() {
   useEffect(() => {
     const handleMouseMove = (e) => {
       if (appRef.current) {
-        const cards = appRef.current.querySelectorAll('.spotlight-card');
-        cards.forEach(card => {
-          const rect = card.getBoundingClientRect();
+        // Maintain mouse-move coordinates for potential subtle card reactions
+        const elements = appRef.current.querySelectorAll('.spotlight-card');
+        elements.forEach(el => {
+          const rect = el.getBoundingClientRect();
           const x = e.clientX - rect.left;
           const y = e.clientY - rect.top;
-          card.style.setProperty('--mouse-x', `${x}px`);
-          card.style.setProperty('--mouse-y', `${y}px`);
+          el.style.setProperty('--mouse-x', `${x}px`);
+          el.style.setProperty('--mouse-y', `${y}px`);
         });
       }
     };
@@ -31,43 +32,62 @@ function App() {
   return (
     <Router>
       <ScrollToTop />
-      <div ref={appRef}>
+      <div className="app-container" ref={appRef}>
+        
+        {/* Full-Width Corporate Navbar */}
         <nav className="navbar">
-          <NavLink to="/" className="nav-logo-link">
-            <img src="/logo.png" alt="Plasmex Biotech" className="nav-logo" />
-          </NavLink>
-
-          <div className="nav-links">
-            <NavLink
-              to="/"
-              className={({ isActive }) => isActive ? "nav-btn active" : "nav-btn"}
-            >
-              Inicio
+          <div className="navbar-container">
+            <NavLink to="/" className="nav-brand">
+              <img src="/logo.svg" alt="Plasmex Biotech" className="nav-logo" />
+              <span className="brand-text">PLASMEX BIOTECH</span>
             </NavLink>
 
-            <NavLink
-              to="/servicios"
-              className={({ isActive }) => isActive ? "nav-btn active" : "nav-btn"}
-            >
-              Servicios
-            </NavLink>
+            <div className="nav-links">
+              <NavLink
+                to="/"
+                className={({ isActive }) => isActive ? "nav-btn active" : "nav-btn"}
+              >
+                Inicio
+              </NavLink>
 
-            <NavLink
-              to="/contacto"
-              className={({ isActive }) => isActive ? "nav-btn active" : "nav-btn"}
-            >
-              Contacto
+              <NavLink
+                to="/servicios"
+                className={({ isActive }) => isActive ? "nav-btn active" : "nav-btn"}
+              >
+                Servicios
+              </NavLink>
+
+              <NavLink
+                to="/contacto"
+                className={({ isActive }) => isActive ? "nav-btn active" : "nav-btn"}
+              >
+                Contacto
+              </NavLink>
+            </div>
+
+            {/* Corporate CTA */}
+            <NavLink to="/contacto" className="nav-cta">
+              Iniciar Proyecto
             </NavLink>
           </div>
         </nav>
 
-        <Routes>
-          <Route path="/" element={<Inicio />} />
-          <Route path="/servicios" element={<Servicios />} />
-          <Route path="/contacto" element={<Contacto />} />
-        </Routes>
+        {/* Main Content Area */}
+        <main>
+          <Routes>
+            <Route path="/" element={<Inicio />} />
+            <Route path="/servicios" element={<Servicios />} />
+            <Route path="/contacto" element={<Contacto />} />
+          </Routes>
+        </main>
 
-        <footer>© 2025 Plasmex Biotech</footer>
+        {/* Corporate Footer */}
+        <footer>
+          <div className="footer-container">
+            <p>© 2026 Plasmex Biotech S.A. de C.V. Todos los derechos reservados.</p>
+            <p style={{ marginTop: '0.5rem', fontSize: '0.8rem' }}>Investigación, síntesis y escalamiento molecular certificado.</p>
+          </div>
+        </footer>
       </div>
     </Router>
   );
