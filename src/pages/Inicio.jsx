@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import DnaHelixAnimation from '../components/DnaHelixAnimation';
 
 export default function Inicio() {
   const navigate = useNavigate();
@@ -216,34 +217,9 @@ export default function Inicio() {
             </div>
           </div>
 
-          {/* Right Column: Minimalist Animated Vector SVG Image */}
+          {/* Right Column: Interactive D3 DNA Helix Animation */}
           <div style={{ display: 'flex', justifyContent: 'center' }}>
-            <svg width="100%" height="320" viewBox="0 0 400 320" style={{ maxWidth: '340px' }} className="hero-vector-svg">
-              <defs>
-                <linearGradient id="vector-blue" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#1e3a8a" />
-                  <stop offset="100%" stopColor="#3b82f6" />
-                </linearGradient>
-              </defs>
-              {/* DNA Double Helix Abstract Path */}
-              <g transform="translate(0, 10)" style={{ animation: 'floatElement 6s ease-in-out infinite' }}>
-                {/* Connecting rungs */}
-                <line x1="100" y1="100" x2="300" y2="100" stroke="#e2e8f0" strokeWidth="2" strokeDasharray="5 5" />
-                <line x1="120" y1="130" x2="280" y2="130" stroke="#e2e8f0" strokeWidth="2" strokeDasharray="5 5" />
-                <line x1="150" y1="70" x2="250" y2="70" stroke="#e2e8f0" strokeWidth="2" strokeDasharray="5 5" />
-                <line x1="100" y1="160" x2="300" y2="160" stroke="#e2e8f0" strokeWidth="2" strokeDasharray="5 5" />
-                
-                {/* Wave 1 */}
-                <path d="M 80,100 C 140,40 180,160 240,100 C 300,40 340,160 360,100" fill="none" stroke="url(#vector-blue)" strokeWidth="6" strokeLinecap="round" />
-                {/* Wave 2 */}
-                <path d="M 80,100 C 140,160 180,40 240,100 C 300,160 340,40 360,100" fill="none" stroke="#64748b" strokeWidth="4" strokeLinecap="round" />
-                
-                {/* Rotating Plasmids circles */}
-                <circle cx="110" cy="50" r="16" fill="none" stroke="#2563eb" strokeWidth="4" strokeDasharray="40 10" />
-                <circle cx="280" cy="180" r="22" fill="none" stroke="#16a34a" strokeWidth="5" strokeDasharray="80 15" />
-                <circle cx="340" cy="60" r="14" fill="none" stroke="#7c3aed" strokeWidth="3" />
-              </g>
-            </svg>
+            <DnaHelixAnimation />
           </div>
 
         </div>
